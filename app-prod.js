@@ -889,11 +889,11 @@
         },
         Yb = {
             back: {
-                keyCode: 27,
+                keyCode: 27, // 0x1B VK_ESCAPE
                 label: "[[Back|Speech command for going back from the current screen.|642229470]]"
             },
             "close-guide": {
-                keyCode: 172,
+                keyCode: 172, // 0xAC VK_BROWSER_HOME
                 label: "[[Close guide|Speech command to close the guide.]]"
             },
             "delete": {
@@ -17328,60 +17328,63 @@
         })
     };
     d.qM = function(a) {
+		// In Webkit source code
+		// VK_ keys are included in ./Source/WebCore/platform/WindowsKeyboardCodes.h
+		// VKEYS_ keys are included in ./Source/WebCore/platform/chromium/KeyboardCodes.h
         switch (a.keyCode) {
-            case 40:
+            case 40: // 0x28 VK_DOWN
                 this.cd("down");
                 break;
-            case 38:
+            case 38: // 0x26 VK_UP
                 this.cd("up");
                 break;
-            case 37:
+            case 37: // 0x25 VK_LEFT
                 this.cd("left");
                 break;
-            case 39:
+            case 39: // 0x29 VK_RIGHT
                 this.cd("right");
                 break;
-            case 75:
-            case 19:
-            case 32:
+            case 75: // 0x4B VK_K
+            case 19: // 0x13 VK_PAUSE
+            case 32: // 0x20 VK_SPACE
                 this.cd("pause");
                 break;
-            case 228:
-            case 76:
+            case 228: // 0xE4 VKEY_OEM_104
+            case 76: // 0x4C VK_L
                 this.cd("fastforward");
                 break;
-            case 227:
-            case 74:
+            case 227: // 0xE3 VKEY_OEM_103
+            case 74: // 0x4A VK_J
                 this.cd("rewind");
                 break;
-            case 8:
-            case 27:
+            case 8: // 0x08 VK_BACK
+            case 27: // 0x1B VK_ESCAPE
                 this.g.Yq() || L(a)
         }
     };
     d.rM = function(a) {
         switch (a.keyCode) {
-            case 170:
-            case 83:
+            case 170: // 0xAA VK_BROWSER_SEARCH
+            case 83: // 0x53 VK_S
                 this.g.Wa() || this.kl();
                 break;
-            case 172:
-            case 71:
+            case 172: // 0xAC VK_BROWSER_HOME
+            case 71: // 0x47 VK_G
                 this.j.B("run-process", new dh);
                 break;
-            case 8:
-            case 27:
+            case 8: // 0x08 VK_BACK
+            case 27: // 0x1B VK_ESCAPE
                 this.g.Yq() || L(a);
                 this.g.Ze() && a.h ? this.j.B("run-process", new dh) : this.cd("esc");
                 break;
-            case 13:
+            case 13: // 0x0D VK_RETURN
                 L(a);
                 this.cd("enter");
                 break;
-            case 178:
+            case 178: // 0xB2 VK_MEDIA_STOP
                 this.g.La() && (this.i.useSetsUi ? this.Yc() : this.Nq());
                 break;
-            case 181:
+            case 181: // 0xB5 VK_MEDIA_LAUNCH_MEDIA_SELECT
                 this.j.B("show-context-menu")
         }
     };
@@ -18878,14 +18881,14 @@
     };
     d.WN = function(a) {
         if (this.I.useSetsUi && this.g.mc() && this.g.Wa()) switch (a.keyCode) {
-            case 71:
-            case 172:
+            case 71: // 0x47 VK_G
+            case 172: // 0xAC VK_BROWSER_HOME
                 this.X("request-open-guide"), L(a)
         }
     };
     d.UN = function(a) {
         switch (a.keyCode) {
-            case 27:
+            case 27: // 0x1B VK_ESCAPE
                 this.pz()
         }
     };
@@ -18899,7 +18902,7 @@
             }
     };
     d.Ww = function(a, b, c) {
-        c = Ki(c ? [40, 38] : [39, 37]);
+        c = Ki(c ? [40, 38] : [39, 37]); // [0x28 0x26] : [0x27 0x25]
         this.C("keydown", this.Ea(a, y(b, this), c))
     };
     d.SN = function(a) {
@@ -18907,10 +18910,10 @@
             c = this.j;
         a.detail && a.detail.Oe && (c = a.detail.Oe);
         switch (a.keyCode) {
-            case 37:
+            case 37: // 0x25 VK_LEFT
                 b = this.gj(-c);
                 break;
-            case 39:
+            case 39: // 0x27 VK_RIGHT
                 b = this.gj(c)
         }
         b && L(a)
@@ -18926,12 +18929,12 @@
     };
     d.TN = function(a) {
         switch (a.keyCode) {
-            case 38:
-            case 33:
+            case 38: // 0x26 VK_UP
+            case 33: // 0x21 VK_PRIOR
                 this.kh(-this.j);
                 break;
-            case 40:
-            case 34:
+            case 40: // 0x28 VK_DOWN
+            case 34: // 0x22 VK_NEXT
                 this.kh(this.j)
         }
     };
@@ -19143,8 +19146,8 @@
     d.ZE = function(a) {
         var b = !1;
         switch (a.keyCode) {
-            case 37:
-            case 39:
+            case 37: // 0x25 VK_LEFT
+            case 39: // 0x27 VK_RIGHT
                 var c = 37 === a.keyCode ? this.g : this.i;
                 c.ha() || (c.fa(), b = c.ha());
                 break;
@@ -19499,10 +19502,10 @@
     };
     d.cB = function(a) {
         switch (a.keyCode) {
-            case 38:
+            case 38: // 0x26 VK_UP
                 this.tq();
                 break;
-            case 40:
+            case 40: // 0x28 VK_DOWN
                 this.sq();
                 break;
             default:
@@ -19523,14 +19526,14 @@
                 this.X("request-open-guide");
                 L(a);
                 break;
-            case 38:
-            case 40:
-            case 37:
-            case 39:
+            case 38: // 0x26 VK_UP
+            case 40: // 0x28 VK_DOWN
+            case 37: // 0x25 VK_LEFT
+            case 39: // 0x27 VK_RIGHT
                 L(a);
                 this.uy();
                 break;
-            case 13:
+            case 13: // 0x0D VK_RETURN
                 this.MS(a.target)
         }
     };
@@ -19727,7 +19730,7 @@
     d.KQ = function(a) {
         L(a);
         switch (a.keyCode) {
-            case 27:
+            case 27: // 0x1B VK_ESCAPE
             case 181:
                 L(a), this.ga()
         }
@@ -23832,28 +23835,28 @@
     };
     d.Jl = function(a) {
         switch (a.keyCode) {
-            case 75:
+            case 75: // 0x4B VK_K
             case 179:
-            case 32:
+            case 32: // 0x20 VK_SPACE
                 this.g.Om();
                 L(a);
                 break;
-            case 19:
+            case 19: // 0x13 VK_PAUSE
                 this.g.pause();
                 break;
-            case 250:
+            case 250: // 0xFA VK_PLAY
                 this.g.play();
                 L(a);
                 break;
-            case 27:
+            case 27: // 0x1B VK_ESCAPE
             case 8:
                 this.j.cG() && this.O + 1E3 > this.J.Uc().getTime() && L(a);
                 break;
-            case 71:
+            case 71: // 0x47 VK_G
             case 172:
                 L(a);
                 break;
-            case 181:
+            case 181: // 0xB5 VK_MEDIA_LAUNCH_MEDIA_SELECT
                 if (this.la.md) {
                     var b = q;
                     this.g.isPlaying && (this.g.pause(), b = y(this.g.play, this.g));
